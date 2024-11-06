@@ -1,3 +1,5 @@
+//A
+
 // #include <bits/stdc++.h>
 // #define ll long long int
 // using namespace std;
@@ -41,7 +43,26 @@
 //     return 0;
 // }
 
+//B
 
+// #include <bits/stdc++.h>
+// #define ll long long int
+// using namespace std;
+// int main()
+// {
+//     ll t;
+//     cin>>t;
+//     while(t--)
+//     {
+//         ll n,x1,y1,x2,y2;
+//         cin>>n>>x1>>y1>>x2>>y2;
+//         ll x=min({(x1-1),(y1-1),(n-y1),(n-x1)});
+//         ll y=min({(x2-1),(y2-1),(n-y2),(n-x2)});
+//         if(x<y)
+//         swap(x,y);
+//         cout<<x-y<<endl;
+//     }
+// }
 
 #include <bits/stdc++.h>
 #define ll long long int
@@ -52,11 +73,23 @@ int main()
     cin>>t;
     while(t--)
     {
-        ll n,x1,y1,x2,y2;
-        cin>>n>>x1>>y1>>x2>>y2;
-        ll res=max((x1-1),(n-y2));
-        ll res1=max((n-x2),(y1-1));
-        ll ans=min(res,res1);
-        cout<<ans<<endl;
+        ll n;
+        cin>>n;
+        vector<ll>b(n-1);
+        for(int i=0;i<n-1;i++)
+        {
+            cin>>b[i];
+        }
+        vector<ll>a(n);
+        a[0]=b[0];
+        for(int i=1;i<n-1;i++)
+        {
+            ll x=min(b[i],b[i-1]);
+            a[i]=x;
+        }
+        a[n-1]=b[n-2];
+        for(int i:a)
+        cout<<i<<" ";
+        cout<<endl;
     }
 }
