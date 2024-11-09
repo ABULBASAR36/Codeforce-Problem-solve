@@ -1,1 +1,0 @@
-{"name":"Local: Pstu__BU","url":"d:\\Github\\Codeforce-Problem-solve\\Pstu__BU.cpp","tests":[{"id":1730982803639,"input":"5\n1 2 3 4 5\n2 1 2 1 2\n3\n1 1 2\n2 2 8\n2 1 5\n","output":"2\n1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Github\\Codeforce-Problem-solve\\Pstu__BU.cpp","group":"local","local":true}
