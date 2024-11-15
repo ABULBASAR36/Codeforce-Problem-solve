@@ -1,3 +1,5 @@
+//A - Traveling Takahashi Problem 
+
 // #include <bits/stdc++.h>
 // #define ll long long int
 // using namespace std;
@@ -31,6 +33,8 @@
 
 //     cout << fixed << setprecision(20) << res<< endl;
 // }
+
+//B - Hands on Ring (Easy) 
 
 #include <bits/stdc++.h>
 #define ll long long int
@@ -114,3 +118,4 @@ int main()
     cout << move << endl;
     return 0;
 }
+
