@@ -107,27 +107,59 @@
 //    }
 //}
 
-#include <iostream>
-#include <vector>
+
+
+#include <bits/stdc++.h>
+#define ll long long int
 using namespace std;
 
-int main() {
-    int t;
+int main()
+{
+    ll t;
     cin >> t;
-
-    while (t--) {
-        int n;
+    while (t--)
+    {
+        ll n;
         cin >> n;
-        vector<int> a(n);
 
-        for (int i = 0; i < n; ++i) {
-            cin >> a[i];
+        ll tem = n;
+        vector<ll> res;
+
+        vector<ll> b;
+        while (n > 0)
+        {
+            b.push_back(n % 2); 
+            n /= 2;            
         }
 
-        // মাঝের উপাদান খুঁজে বের করি
-        int middle_index = n / 2;
-        cout << a[middle_index] << endl;
-    }
+        //reverse(b.begin(), b.end());
 
+        n = tem;
+
+        if (__builtin_popcountll(n) == 1)
+        {
+            cout << 1 << endl; 
+            cout << n << endl;
+        }
+        else
+        {
+            for (int i = 0; i < b.size(); i++)
+            {
+                if (b[i] == 1) 
+                {
+                    ll value = n - (1LL << i);
+                    res.push_back(value);
+                }
+            }
+            res.push_back(n); 
+
+            sort(res.begin(), res.end());
+
+            cout << res.size() << endl;
+            for (ll c : res)
+                cout << c << " ";
+            cout << endl;
+        }
+    }
     return 0;
 }

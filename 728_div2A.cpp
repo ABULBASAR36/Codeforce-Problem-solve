@@ -46,40 +46,80 @@ int main()
 
     return 0;
 }*/
+// #include <bits/stdc++.h>
+// #define ll long long int
+// using namespace std;
+
+// int main() {
+//     ll t;
+//     cin >> t;
+
+//     while (t--) {
+//         ll n;
+//         cin >> n;
+//         vector<ll> v;
+
+//         // Initialize the permutation
+//         for (int i = 1; i <= n; i++) {
+//             v.push_back(i);
+//         }
+
+//         // Swap adjacent cats to minimize total distance
+//         for (int i = 0; i < n - 1; i += 2) {
+//             swap(v[i], v[i + 1]);
+//         }
+
+//         // If n is odd, swap the last two cats to ensure no cat is in its original position
+//         if (n % 2 == 1) {
+//             swap(v[n - 1], v[n - 2]);
+//         }
+
+//         // Output the permutation
+//         for (int i : v)
+//             cout << i << ' ';
+//         cout << endl;
+//     }
+
+//     return 0;
+// }
+
+//B. Pleasant Pairs
+
 #include <bits/stdc++.h>
-#define ll long long int
+#define ll long long
 using namespace std;
 
-int main() {
+int main() 
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
     ll t;
     cin >> t;
-
-    while (t--) {
+    while (t--) 
+    {
         ll n;
         cin >> n;
-        vector<ll> v;
-
-        // Initialize the permutation
-        for (int i = 1; i <= n; i++) {
-            v.push_back(i);
+        vector<ll> a(n + 1);
+        for (ll i = 1; i <= n; i++) 
+        {
+            cin >> a[i];
         }
 
-        // Swap adjacent cats to minimize total distance
-        for (int i = 0; i < n - 1; i += 2) {
-            swap(v[i], v[i + 1]);
+        ll cn = 0;
+        for (ll i = 1; i <= n; i++) 
+        {
+            for (ll j = a[i]-i; j <= n; j += a[i]) 
+            {
+                if(j>=0)
+                if (j > i && a[i] * a[j] == i + j) 
+                    cn++;
+                
+            }
         }
 
-        // If n is odd, swap the last two cats to ensure no cat is in its original position
-        if (n % 2 == 1) {
-            swap(v[n - 1], v[n - 2]);
-        }
-
-        // Output the permutation
-        for (int i : v)
-            cout << i << ' ';
-        cout << endl;
+        cout << cn << "\n";
     }
 
     return 0;
 }
-
