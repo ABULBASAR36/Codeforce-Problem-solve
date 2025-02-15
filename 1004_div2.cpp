@@ -160,63 +160,114 @@
 
 //C - Devyatkino
 
+// #include <bits/stdc++.h>
+// using namespace std;
+// #define ll long long int
+
+// bool has_seven(int n) 
+// {
+//     string s = to_string(n);
+//     return s.find('7') != string::npos;
+// }
+
+// int main()
+// {
+//     ios::sync_with_stdio(false);
+//     cin.tie(nullptr);
+//     int t;
+//     cin >> t;
+//     while (t--) 
+//     {
+//         int n;
+//         cin >> n;
+//         if (has_seven(n)) 
+//         {
+//             cout << 0 << endl;
+//             continue;
+//         }
+//         bool found = false;
+//         for (int k = 1; k <= 20; ++k)
+//          {
+//             int m = n - k;
+//             if (m < 0) continue;
+//             string s = to_string(m);
+         
+//             if (s.size() < 20) 
+//             {
+//                 s = string(20 - s.size(), '0') + s;
+//             }
+//             for (char c : s) 
+//             {
+//                 int digit = c - '0';
+//                 int req = (7 - digit) % 10;
+//                 if (req< 0) req += 10;
+//                 if (req <= k && (k - req) >= 0) 
+//                 {
+//                     cout << k << endl;
+//                     found = true;
+//                     break;
+//                 }
+//             }
+//             if (found) break;
+//         }
+//         if (!found) 
+//         {
+            
+//             cout << 20 << endl;
+//         }
+//     }
+//     return 0;
+// }
+
+//B - Two Large Bags
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
 
-bool has_seven(int n) 
-{
-    string s = to_string(n);
-    return s.find('7') != string::npos;
+void solve(void) {
+    int n;
+    cin >> n;
+    map<int, int> mp;
+    vector<int> v(n);
+
+    for (auto &it : v) {
+        cin >> it;
+        mp[it]++;
+    }
+
+    int fl = 1;
+    for (auto it : mp) {
+        if (it.second & 1) {
+            fl = 0;
+            break;
+        }
+    }
+
+    if (fl) {
+        cout << "Yes\n";
+        return;
+    }
+
+    for (int i = 1; i <= 2 * n; i++) {
+        if (mp[i] == 0) continue;
+
+        if (mp[i] < 2) {
+            cout << "No\n";
+            return;
+        }
+
+        mp[i] -= 2;
+        mp[i + 1] += mp[i];
+    }
+
+    cout << "Yes\n";
 }
 
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main() {
     int t;
     cin >> t;
-    while (t--) 
-    {
-        int n;
-        cin >> n;
-        if (has_seven(n)) 
-        {
-            cout << 0 << endl;
-            continue;
-        }
-        bool found = false;
-        for (int k = 1; k <= 20; ++k)
-         {
-            int m = n - k;
-            if (m < 0) continue;
-            string s = to_string(m);
-         
-            if (s.size() < 20) 
-            {
-                s = string(20 - s.size(), '0') + s;
-            }
-            for (char c : s) 
-            {
-                int digit = c - '0';
-                int req = (7 - digit) % 10;
-                if (req< 0) req += 10;
-                if (req <= k && (k - req) >= 0) 
-                {
-                    cout << k << endl;
-                    found = true;
-                    break;
-                }
-            }
-            if (found) break;
-        }
-        if (!found) 
-        {
-            
-            cout << 20 << endl;
-        }
+    while (t--) {
+        solve();
     }
     return 0;
 }
-
-
