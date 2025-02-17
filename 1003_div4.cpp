@@ -24,6 +24,35 @@
 //     return 0;
 // }
 
+// #include <bits/stdc++.h>
+// using namespace std;
+// #define ll long long int
+
+// int main() 
+// {
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(NULL);
+
+//     ll t;
+//     cin >> t;
+//     while (t--) 
+//     {
+//         string s;
+//         cin >> s;
+//         ll n = s.size();
+
+//         if (n >= 2 && s[n - 1] == 's' && s[n - 2] == 'u') 
+//         {
+//             s.erase(n - 2, 2); 
+//         }
+
+//         s.push_back('i'); 
+
+//         cout << s << endl;
+//     }
+// }
+
+
 //C1 - Skibidus and Fanum Tax (easy version)
 
 // #include <bits/stdc++.h>
@@ -117,6 +146,40 @@
 //     }
 //     return 0;
 // }
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int main() 
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    ll t;
+    cin >> t;
+    while (t--) 
+    {
+        string s;
+        cin >> s;
+        bool ok=true;
+        ll cn=0;
+        for(int i=0;i<s.size()-1;i++)
+        {
+            if(ok==true&& s[i]==s[i+1])
+            {
+             ok=false;
+            break;
+            }
+            
+        }
+        if(ok)
+        cout<<s.size()<<endl;
+        else
+        cout<<1<<endl;
+    }
+}
+
 
 //D - Skibidus and Sigma
 
@@ -398,67 +461,67 @@
 
 //E - Skibidus and Rizz
 
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-string construct(int n, int m, int k) {
-    string s;
-    char current = (n >= m) ? '0' : '1';
-    int remaining[2] = {n, m};
-    while (remaining[0] > 0 || remaining[1] > 0) {
-        int idx = (current == '0') ? 0 : 1;
-        int take = min(remaining[idx], k);
-        s += string(take, current);
-        remaining[idx] -= take;
-        current = (current == '0') ? '1' : '0';
-    }
-    return s;
-}
+// string construct(int n, int m, int k) {
+//     string s;
+//     char current = (n >= m) ? '0' : '1';
+//     int remaining[2] = {n, m};
+//     while (remaining[0] > 0 || remaining[1] > 0) {
+//         int idx = (current == '0') ? 0 : 1;
+//         int take = min(remaining[idx], k);
+//         s += string(take, current);
+//         remaining[idx] -= take;
+//         current = (current == '0') ? '1' : '0';
+//     }
+//     return s;
+// }
 
-bool check(const string &s, int k) {
-    int max_run = 0;
-    int current_run = 1;
-    for (int i = 1; i < s.size(); ++i) {
-        if (s[i] == s[i-1]) {
-            current_run++;
-        } else {
-            max_run = max(max_run, current_run);
-            current_run = 1;
-        }
-    }
-    max_run = max(max_run, current_run);
-    int zeros = count(s.begin(), s.end(), '0');
-    int ones = s.size() - zeros;
-    int diff = abs(zeros - ones);
-    return max(max_run, diff) == k;
-}
+// bool check(const string &s, int k) {
+//     int max_run = 0;
+//     int current_run = 1;
+//     for (int i = 1; i < s.size(); ++i) {
+//         if (s[i] == s[i-1]) {
+//             current_run++;
+//         } else {
+//             max_run = max(max_run, current_run);
+//             current_run = 1;
+//         }
+//     }
+//     max_run = max(max_run, current_run);
+//     int zeros = count(s.begin(), s.end(), '0');
+//     int ones = s.size() - zeros;
+//     int diff = abs(zeros - ones);
+//     return max(max_run, diff) == k;
+// }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    int t;
-    cin >> t;
-    while (t--) {
-        int n, m, k;
-        cin >> n >> m >> k;
-        if (n == 0 || m == 0) {
-            if (k == max(n, m)) {
-                cout << string(max(n, m), (n > 0) ? '0' : '1') << '\n';
-            } else {
-                cout << "-1\n";
-            }
-            continue;
-        }
-        if (k < abs(n - m) || k > max(n, m)) {
-            cout << "-1\n";
-            continue;
-        }
-        string s = construct(n, m, k);
-        if (check(s, k)) {
-            cout << s << '\n';
-        } else {
-            cout << "-1\n";
-        }
-    }
-    return 0;
-}
+// int main() {
+//     ios::sync_with_stdio(false);
+//     cin.tie(0);
+//     int t;
+//     cin >> t;
+//     while (t--) {
+//         int n, m, k;
+//         cin >> n >> m >> k;
+//         if (n == 0 || m == 0) {
+//             if (k == max(n, m)) {
+//                 cout << string(max(n, m), (n > 0) ? '0' : '1') << '\n';
+//             } else {
+//                 cout << "-1\n";
+//             }
+//             continue;
+//         }
+//         if (k < abs(n - m) || k > max(n, m)) {
+//             cout << "-1\n";
+//             continue;
+//         }
+//         string s = construct(n, m, k);
+//         if (check(s, k)) {
+//             cout << s << '\n';
+//         } else {
+//             cout << "-1\n";
+//         }
+//     }
+//     return 0;
+// }
